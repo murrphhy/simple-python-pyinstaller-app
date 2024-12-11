@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'python:3.12.0-alpine3.18'
-            args '--tlsverify --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem -H=tcp://dind_container:2376'
         }
     }
     options {
@@ -19,7 +18,6 @@ pipeline {
             agent {
                 docker {
                     image 'qnib/pytest'
-                    args '--tlsverify --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem -H=tcp://dind_container:2376'
                 }
             }
             steps {
